@@ -23,7 +23,7 @@
                             <td>{{ item.stock }}</td>
                             <td>{{ item.recstock }}</td>
                             <td>
-                                <div class="btn btn-outline-info" @click= "showModal = true">Modificar</div>
+                                <div class="btn btn-outline-info" @click= "showModal = true ; updateindexreference(index);">Modificar</div>
                                 <div class="btn btn-outline-danger" @click= "delItem(index)">Eliminar</div>
                             </td>
                         </tr>
@@ -67,7 +67,7 @@ export default {
     /* totalPages: function() {
           return Math.ceil(this.resultCount / this.itemsPerPage)}, */
 
-   ...Vuex.mapState(['items','nuevoid','nuevonombre','nuevomarca','nuevostock','nuevorecstock']),
+   ...Vuex.mapState(['items','nuevoid','nuevonombre','nuevomarca','nuevostock','nuevorecstock', 'indexreference']),
    nuevoid: {
     get () {
       return this.$store.state.nuevoid
@@ -102,16 +102,12 @@ export default {
     },
     set (value) {
         this.$store.commit('updateNuevorecstock', value)
-    }},
+    }}
             
 },
 methods:{
-    ...Vuex.mapMutations(['agregarItem','updateNuevoid','updateNuevonombre','updateNuevomarca','updateNuevostock','updateNuevorecstock', 'delItem']),
-        referindex (event, index) {
-      if (event){
-        indexreference = index
-        }
-      },
+    ...Vuex.mapMutations(['agregarItem','updateNuevoid','updateNuevonombre','updateNuevomarca','updateNuevostock','updateNuevorecstock', 'delItem', 'updateindexreference']),
+     
     /* setPage: function(pageNumber) {
           this.currentPage = pageNumber
         }

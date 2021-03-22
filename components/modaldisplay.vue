@@ -13,20 +13,20 @@
 
           <div class="modal-body">
             <slot name="body">
-              <p>Id: {{(items)[indexreference].id}}</p><Input v-model= "replaceid" ></Input>
-              <p>Producto: {{(items)[indexreference].nombre}}</p><Input v-model= "replacenombre"></Input>
-              <p>Proveedor: {{(items)[indexreference].marca}}</p><Input v-model= "replacemarca"></Input>
-              <p>Stock: {{(items)[indexreference].stock}}</p><Input v-model= "replacestock"></Input>
-              <p>R.Stock: {{(items)[indexreference].recstock}}</p><Input v-model= "replacerecstock"></Input>
+              <p class="my-2">Id: {{(items)[indexreference].id}}</p><Input v-model= "replaceid" ></Input>
+              <p class="my-2">Producto: {{(items)[indexreference].nombre}}</p><Input v-model= "replacenombre"></Input>
+              <p class="my-2">Proveedor: {{(items)[indexreference].marca}}</p><Input v-model= "replacemarca"></Input>
+              <p class="my-2">Stock: {{(items)[indexreference].stock}}</p><Input v-model= "replacestock"></Input>
+              <p class="my-2">R.Stock: {{(items)[indexreference].recstock}}</p><Input v-model= "replacerecstock"></Input>
             </slot>
           </div>
 
           <div class="modal-footer">
-            <slot name="footer">
-              <button class="btn btn-outline-info" @click="$emit('close');">
+            <slot name="footer container row">
+              <button class="btn btn-outline-info col" @click="$emit('close'); $store.commit('modificarItem');">
                 Confirmar
               </button>
-              <button class="btn btn-outline-danger" @click="$emit('close');">
+              <button class="btn btn-outline-danger col" @click="$emit('close');">
                 Cancelar
               </button>
             </slot>
@@ -45,66 +45,18 @@ import store from '../store/index.js'
 
 export default {
   name: 'modaldisplay',
+  store,
     computed: {
-    computedClass() {
-        let className = '';
-        const current = parseFloat(this.stock)
-        const expected = parseFloat(this.recstock)
-        if (current === 0) {
-            className = 'table-danger'
-        }            
-        else if(current < expected ) {
-            className = 'table-warning'
-        }
-        else{
-            className = ''
-        }
-        return className
-    },
-   ...Vuex.mapState(['items','nuevoid','nuevonombre','nuevomarca','nuevostock','nuevorecstock']),
-   nuevoid: {
-    get () {
-      return this.$store.state.nuevoid
-    },
-    set (value) {
-      this.$store.commit('updateNuevoid', value)
-    }},
-   nuevonombre: {
-    get () {
-      return this.$store.state.nuevonombre
-    },
-    set (value) {
-      this.$store.commit('updateNuevonombre', value)
-    }},
-    nuevomarca: {
-    get () {
-        return this.$store.state.nuevomarca
-    },
-    set (value) {
-        this.$store.commit('updateNuevomarca', value)
-    }},
-    nuevostock: {
-    get () {
-        return this.$store.state.nuevostock
-    },
-    set (value) {
-        this.$store.commit('updateNuevostock', value)
-    }},
-    nuevorecstock: {
-    get () {
-        return this.$store.state.nuevorecstock
-    },
-    set (value) {
-        this.$store.commit('updateNuevorecstock', value)
-    }},
-      replaceid: {
+   ...Vuex.mapState(['items', 'indexreference', 'replaceid', 'replacenombre', 'replacemarca', 'replacestock', 'replacerecstock']),
+    //getters y setters model modificacion de items
+    replaceid: {
     get () {
       return this.$store.state.replaceid
     },
     set (value) {
       this.$store.commit('updatereplace', value)
     }},
-   replacenombre: {
+    replacenombre: {
     get () {
       return this.$store.state.replacenombre
     },
@@ -131,17 +83,23 @@ export default {
     },
     set (value) {
         this.$store.commit('updatereplacerecstock', value)
+    }},
+    changeindexreference: {
+    get () {
+        return this.$store.state.indexreference
+    },
+    set (value) {
+        this.$store.commit('updateindexreference', value)
     }}
             
 },
 methods:{
-    ...Vuex.mapMutations(['agregarItem','updateNuevoid','updateNuevonombre','updateNuevomarca','updateNuevostock','updateNuevorecstock', 'delItem']),
+    ...Vuex.mapMutations(['updateindexreference','updatereplaceid','updatereplacenombre','updatereplacemarca','updatereplacestock']),
 
  },
  data: function () {
     return {
-        indexreference: '10',
- 
+      
     }
  }
 }

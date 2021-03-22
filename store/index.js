@@ -38,16 +38,20 @@ export default new Vuex.Store({
         {id: 30, nombre: 'Pack de Mascarillas', marca: 'Chancho', stock:78, recstock:60},
         
     ],
+    //placeholders item nuevo
     nuevoid: '',
     nuevonombre: '',
     nuevomarca:'',
     nuevostock: '',
     nuevorecstock: '',
+    //placeholders modificacion
     replaceid: '',
     replacename: '',
     replacemarca: '',
     replacestock: '',
-    replacerecstock: ''
+    replacerecstock: '',
+    //placeholder selector de item del modal
+    indexreference: '10',
 },
   mutations: {
     agregarItem (state) {
@@ -70,7 +74,7 @@ export default new Vuex.Store({
         state.nuevostock = ''
         state.nuevorecstock = '';
     },
-
+    //Update inputs additem >placeholders para nuevo item
     updateNuevoid (state, nuevoid) {
         state.nuevoid = nuevoid
     },
@@ -86,6 +90,7 @@ export default new Vuex.Store({
     updateNuevorecstock (state, nuevorecstock) {
         state.nuevorecstock = nuevorecstock
     },
+    //update inputs modal > placeholders modificacion de items
     updatereplaceid (state, replaceid) {
         state.replaceid = replaceid
     },
@@ -101,21 +106,14 @@ export default new Vuex.Store({
     updatereplacerecstock (state, replacerecstock) {
         state.replacerecstock = replacerecstock
     },
-    
+    updateindexreference (state, indexreference) {
+        state.indexreference = indexreference
+    },
+    //eliminar item segun index
     delItem (state,index) {
        state.items.splice(index,1)
         
     },
-    /* replaceItemValues (state) {
-        state(items)[index].push({
-            id: state.nuevoid, nombre: state.nuevonombre, marca: state.nuevomarca, stock: state.nuevostock, recstock: state.nuevorecstock
-        });
-        state.nuevoid = ''
-        state.nuevonombre = ''
-        state.nuevomarca = ''
-        state.nuevostock = ''
-        state.nuevorecstock = '';
-    }, */
 },
   actions: {
   },
