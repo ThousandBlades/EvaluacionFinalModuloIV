@@ -42,7 +42,6 @@
 import Vuex from 'vuex'
 import store from '../store/index.js'
 
-
 export default {
   name: 'modaldisplay',
   store,
@@ -94,7 +93,7 @@ export default {
             
 },
 methods:{
-    ...Vuex.mapMutations(['updateindexreference','updatereplaceid','updatereplacenombre','updatereplacemarca','updatereplacestock']),
+    ...Vuex.mapMutations(['updateindexreference','updatereplaceid','updatereplacenombre','updatereplacemarca','updatereplacestock','modificarItem']),
 
  },
  data: function () {

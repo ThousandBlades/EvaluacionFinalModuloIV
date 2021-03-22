@@ -8,7 +8,7 @@
                 <input class="my-3 ninput"  type="number" v-model= "nuevostock" placeholder='Stock'><br>
                 <input class="my-3 ninput"  type="number" v-model= "nuevorecstock" placeholder='Stock Recomendado'>
                 <div>
-                    <div class="btn btn-outline-success align-self-center" :click="$store.commit('agregarItem')">Enviar</div>
+                    <div class="btn btn-outline-success align-self-center" v-on:click="$store.commit('agregarItem')">Enviar</div>
                 </div>
                 
             </div>
@@ -20,7 +20,6 @@ import store from '../store/index.js'
 
 export default {
   name: 'additem',
-  store,
   computed: {
    ...Vuex.mapState(['items','nuevoid','nuevonombre','nuevomarca','nuevostock','nuevorecstock']),
    //getters y setters adición de items
@@ -62,7 +61,7 @@ export default {
             
 },
 methods:{
-    ...Vuex.mapMutations(['agregarItem','updateNuevoid','updateNuevonombre','updateNuevomarca','updateNuevostock','updateNuevorecstock'])
+    ...Vuex.mapMutations(['updateNuevoid','updateNuevonombre','updateNuevomarca','updateNuevostock','updateNuevorecstock'])
      
  }
 }

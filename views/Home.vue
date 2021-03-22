@@ -38,25 +38,23 @@
 </template>
 
 <script>
-import Vuex from 'vuex'
-import store from '../store/index.js'
+import Vuex, { mapState } from 'vuex'
 import modaldisplay from "../components/modaldisplay.vue";
 
 export default {
   name: 'Home',
-  store,
   components: {
     modaldisplay
   },
   computed: {
     computedClass(index) {
         let className = '';
-        const current = parseFloat(60)
-        const expected = parseFloat(10)
-        if (current == 0) {
+        const current = parseFloat(20)
+        const expected = parseFloat(15)
+        if (current === 0) {
             className = 'table-danger'
         }            
-        else if(current < expected ) {
+        else if(current < expected) {
             className = 'table-warning'
         }
         else{
@@ -106,7 +104,7 @@ export default {
             
 },
 methods:{
-    ...Vuex.mapMutations(['agregarItem','updateNuevoid','updateNuevonombre','updateNuevomarca','updateNuevostock','updateNuevorecstock', 'delItem', 'updateindexreference']),
+    ...Vuex.mapMutations(['updateNuevoid','updateNuevonombre','updateNuevomarca','updateNuevostock','updateNuevorecstock', 'delItem', 'updateindexreference']),
      
     /* setPage: function(pageNumber) {
           this.currentPage = pageNumber

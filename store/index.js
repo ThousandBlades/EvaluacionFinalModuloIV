@@ -51,7 +51,7 @@ export default new Vuex.Store({
     replacestock: '',
     replacerecstock: '',
     //placeholder selector de item del modal
-    indexreference: '10',
+    indexreference: '',
 },
   mutations: {
     agregarItem (state) {
@@ -62,7 +62,7 @@ export default new Vuex.Store({
         state.nuevonombre = ''
         state.nuevomarca = ''
         state.nuevostock = ''
-        state.nuevorecstock = '';
+        state.nuevorecstock = ''
     },
     modificarItem (state) {
         state.items.push({
