@@ -6,7 +6,7 @@
                   <input class="m-2" type= "text" v-model= "search"></div>
                 <table class="table">
                     <thead>
-                      <tr class="table-primary">
+                      <tr class="table-dark">
                         <th scope="col">ID</th>
                         <th scope="col">Producto</th>
                         <th scope="col">Proveedor</th>
@@ -16,11 +16,11 @@
                       </tr>
                     </thead>
                     <tbody>
-                        <tr v-for= "(item, index) in items" :key= "index" :class= "computedClass">
+                        <tr v-for= "(item, index) in filteredList" :key= "index" :class= "[ item.stock < item.recstock ? item.stock==0 ? 'table-danger' : 'table-warning' : '' ]">
                             <td>{{ item.id }}</td>
                             <td>{{ item.nombre }}</td>
                             <td>{{ item.marca }}</td>
-                            <td>{{ item.stock }}</td>
+                            <td>{{ item.stock }} <button @click= "item.stock++">+</button><button @click= "item.stock > 0 ? item.stock-- : ''">-</button></td>
                             <td>{{ item.recstock }}</td>
                             <td>
                                 <div class="btn btn-outline-info" @click= "showModal = true ; updateindexreference(index);">Modificar</div>
@@ -47,25 +47,13 @@ export default {
     modaldisplay
   },
   computed: {
-    computedClass(index) {
-        let className = '';
-        const current = parseFloat(20)
-        const expected = parseFloat(15)
-        if (current === 0) {
-            className = 'table-danger'
-        }            
-        else if(current < expected) {
-            className = 'table-warning'
-        }
-        else{
-            className = ''
-        }
-        return className
+    filteredList() {
+      return this.items.filter(item => {
+        return item.nombre.toLowerCase().includes(this.search.toLowerCase()) || item.marca.toLowerCase().includes(this.search.toLowerCase())
+      })
     },
-    /* totalPages: function() {
-          return Math.ceil(this.resultCount / this.itemsPerPage)}, */
 
-   ...Vuex.mapState(['items','nuevoid','nuevonombre','nuevomarca','nuevostock','nuevorecstock', 'indexreference']),
+  ...Vuex.mapState(['items','nuevoid','nuevonombre','nuevomarca','nuevostock','nuevorecstock', 'indexreference']),
    nuevoid: {
     get () {
       return this.$store.state.nuevoid
