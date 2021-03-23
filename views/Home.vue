@@ -57,6 +57,7 @@ export default {
     },
 
   ...Vuex.mapState(['items','nuevoid','nuevonombre','nuevomarca','nuevostock','nuevorecstock', 'indexreference']),
+   //getters y setters adición de items
    nuevoid: {
     get () {
       return this.$store.state.nuevoid
@@ -96,29 +97,12 @@ export default {
 },
 methods:{
     ...Vuex.mapMutations(['updateNuevoid','updateNuevonombre','updateNuevomarca','updateNuevostock','updateNuevorecstock', 'delItem', 'updateindexreference']),
-     
-    /* setPage: function(pageNumber) {
-          this.currentPage = pageNumber
-        }
-     
- },
-    filters: {
-        paginate: function(table) {
-            this.resultCount = table.length
-            if (this.currentPage >= this.totalPages) {
-              this.currentPage = this.totalPages - 1
-            }
-            var index = this.currentPage * this.itemsPerPage
-            return list.slice(index, index + this.itemsPerPage)
-        } */
     },
 data: function () {
     return {
         showModal: false,
         search: '',
-        /* currentPage: 0,
-        itemsPerPage: 10,
-        resultCount: 0 */
+       
     }
 },
 }

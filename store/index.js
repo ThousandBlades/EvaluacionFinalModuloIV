@@ -90,7 +90,7 @@ export default new Vuex.Store({
         state.replacestock = ''
         state.replacerecstock = '';
     },
-    //Update inputs additem >placeholders para nuevo item
+    //Update inputs additem -> placeholders para nuevo item
     updateNuevoid (state, nuevoid) {
         state.nuevoid = nuevoid
     },
@@ -106,7 +106,7 @@ export default new Vuex.Store({
     updateNuevorecstock (state, nuevorecstock) {
         state.nuevorecstock = nuevorecstock
     },
-    //update inputs modal > placeholders modificacion de items
+    //update inputs modal -> placeholders modificacion de items
     updatereplaceid (state, replaceid) {
         state.replaceid = replaceid
     },

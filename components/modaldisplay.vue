@@ -98,11 +98,7 @@ methods:{
  },
  data: function () {
     return {
-          xreplaceid: '10',
-    xreplacenombre: 'a',
-    xreplacemarca: 'b',
-    xreplacestock: '11',
-    xreplacerecstock: '12',
+          
     }
  }
 }
