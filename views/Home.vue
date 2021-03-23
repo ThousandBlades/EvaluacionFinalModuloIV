@@ -6,12 +6,12 @@
                   <input class="m-2" type= "text" v-model= "search"></div>
                 <table class="table">
                     <thead>
-                      <tr class="table-dark">
+                      <tr class="text-light bg-dark">
                         <th scope="col">ID</th>
                         <th scope="col">Producto</th>
                         <th scope="col">Proveedor</th>
                         <th scope="col">Stock</th>
-                        <th scope="col">Stock Recomendado</th>
+                        <th scope="col">Rec. Stock</th>
                         <th scope="col"></th>
                       </tr>
                     </thead>
@@ -26,7 +26,7 @@
                             </td>
                             <td>{{ item.recstock }}</td>
                             <td>
-                                <div class="btn btn-outline-info btn-sm mx-2" @click= "showModal = true ; updateindexreference(index);">Modificar</div>
+                                <div class="btn btn-outline-info btn-sm mx-2 " @click= "showModal = true ; updateindexreference(index);">Modificar</div>
                                 <div class="btn btn-outline-danger btn-sm mx-2" @click= "delItem(index)">Eliminar</div>
                             </td>
                         </tr>

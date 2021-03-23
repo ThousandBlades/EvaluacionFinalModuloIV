@@ -1,5 +1,5 @@
 <template>
-  <div class= "container" id="app">
+  <div class= "container m-auto" id="app">
     <h2 class="text-center fw-bold m-3 p-3 table-dark">Administración de Inventario</h2>
     <div id="row">
       <router-link class="col-4 btn btn-outline-dark m-3" to="/">Inventario</router-link>
