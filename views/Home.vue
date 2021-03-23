@@ -20,11 +20,14 @@
                             <td>{{ item.id }}</td>
                             <td>{{ item.nombre }}</td>
                             <td>{{ item.marca }}</td>
-                            <td>{{ item.stock }} <button @click= "item.stock++">+</button><button @click= "item.stock > 0 ? item.stock-- : ''">-</button></td>
+                            <td class="row justify-content-end">{{ item.stock }}
+                              <button class="border border-success btn btn-light btn-sm mx-1" @click= "item.stock++">+</button>
+                              <button class="border border-danger btn btn-light btn-sm mx-1" @click= "item.stock > 0 ? item.stock-- : ''">-</button>
+                            </td>
                             <td>{{ item.recstock }}</td>
                             <td>
-                                <div class="btn btn-outline-info" @click= "showModal = true ; updateindexreference(index);">Modificar</div>
-                                <div class="btn btn-outline-danger" @click= "delItem(index)">Eliminar</div>
+                                <div class="btn btn-outline-info btn-sm mx-2" @click= "showModal = true ; updateindexreference(index);">Modificar</div>
+                                <div class="btn btn-outline-danger btn-sm mx-2" @click= "delItem(index)">Eliminar</div>
                             </td>
                         </tr>
                       </tbody>

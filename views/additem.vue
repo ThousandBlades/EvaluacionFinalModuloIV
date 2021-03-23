@@ -8,7 +8,7 @@
                 <input class="my-3 ninput"  type="number" v-model= "nuevostock" placeholder='Stock'><br>
                 <input class="my-3 ninput"  type="number" v-model= "nuevorecstock" placeholder='Stock Recomendado'>
                 <div>
-                    <div class="btn btn-outline-success align-self-center" v-on:click="$store.commit('agregarItem')">Enviar</div>
+                    <div class="btn btn-outline-success align-self-center" v-on:click="$store.commit('agregarItem')">Confirmar</div>
                 </div>
                 
             </div>
