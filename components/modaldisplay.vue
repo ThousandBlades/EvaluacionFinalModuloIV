@@ -13,11 +13,11 @@
 
           <div class="modal-body">
             <slot name="body">
-              <p class="my-2">Id: {{(items)[indexreference].id}}</p><Input v-model= "replaceid" ></Input>
-              <p class="my-2">Producto: {{(items)[indexreference].nombre}}</p><Input v-model= "replacenombre"></Input>
-              <p class="my-2">Proveedor: {{(items)[indexreference].marca}}</p><Input v-model= "replacemarca"></Input>
-              <p class="my-2">Stock: {{(items)[indexreference].stock}}</p><Input v-model= "replacestock"></Input>
-              <p class="my-2">R.Stock: {{(items)[indexreference].recstock}}</p><Input v-model= "replacerecstock"></Input>
+              <p class="my-2">Id: {{(items)[indexreference].id}}</p><input class="my-1"  type="number" v-model= "replaceid">
+              <p class="my-2">Producto: {{(items)[indexreference].nombre}}</p><input class="my-1"  type="text" v-model= "replacenombre">
+              <p class="my-2">Proveedor: {{(items)[indexreference].marca}}</p><input class="my-1"  type="text" v-model= "replacemarca">
+              <p class="my-2">Stock: {{(items)[indexreference].stock}}</p><input class="my-1"  type="number" v-model= "replacestock">
+              <p class="my-2">R.Stock: {{(items)[indexreference].recstock}}</p><input class="my-1"  type="number" v-model= "replacerecstock">
             </slot>
           </div>
 
@@ -53,7 +53,7 @@ export default {
       return this.$store.state.replaceid
     },
     set (value) {
-      this.$store.commit('updatereplace', value)
+      this.$store.commit('updatereplaceid', value)
     }},
     replacenombre: {
     get () {
@@ -98,7 +98,11 @@ methods:{
  },
  data: function () {
     return {
-      
+          xreplaceid: '10',
+    xreplacenombre: 'a',
+    xreplacemarca: 'b',
+    xreplacestock: '11',
+    xreplacerecstock: '12',
     }
  }
 }

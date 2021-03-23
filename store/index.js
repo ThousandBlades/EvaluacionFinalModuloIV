@@ -45,11 +45,11 @@ export default new Vuex.Store({
     nuevostock: '',
     nuevorecstock: '',
     //placeholders modificacion
-    replaceid: '10',
-    replacenombre: 'a',
-    replacemarca: 'b',
-    replacestock: '11',
-    replacerecstock: '12',
+    replaceid: '',
+    replacenombre: '',
+    replacemarca: '',
+    replacestock: '',
+    replacerecstock: '',
     //placeholder selector de item del modal
     indexreference: '',
 },
@@ -64,8 +64,26 @@ export default new Vuex.Store({
         state.nuevostock = ''
         state.nuevorecstock = ''
     },
-      modificarItem(state, index) {
+      modificarItem(state) {
+        let indexnumber = state.indexreference;
 
+        if (indexnumber !== -1) {
+            if (state.replaceid !== '') {
+                state.items[indexnumber].id = state.replaceid;
+            }
+            if (state.replacenombre !== '') {
+                state.items[indexnumber].nombre = state.replacenombre;
+            }
+            if (state.replacemarca !== '') {
+                state.items[indexnumber].marca = state.replacemarca;
+            }
+            if (state.replacestock !== '') {
+                state.items[indexnumber].stock = state.replacestock;
+            }
+            if (state.replacerecstock !== '') {
+                state.items[indexnumber].recstock = state.replacerecstock;
+            }
+    }
         state.replaceid = ''
         state.replacenombre = ''
         state.replacemarca = ''
